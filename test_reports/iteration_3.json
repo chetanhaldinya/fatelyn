@@ -1,0 +1,34 @@
+{
+  "summary": "Iteration 3 — validated 2 user-reported bug fixes: (1) full 5-level Vimshottari dasha (Maha→Antar→Pratyantar→Sookshma→Pran) returned by /api/astro/dasha with proper hierarchical nesting; (2) /dashboard rewritten to show 100% real data, zero phone-frame mocks, zero hardcoded 'Chetan' text. Both bugs fully resolved.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_dasha_5level.py",
+    "/app/test_reports/pytest/pytest_iter3.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "astro.py _local_to_utc uses tzinfo=timezone.utc as placeholder then subtracts tz_offset — works but semantically odd; consider using ZoneInfo for clarity.",
+    "Admin user login auto-redirects to /admin; had to navigate manually to /dashboard for testing — acceptable behavior."
+  ],
+  "updated_files": ["/app/backend/tests/test_dasha_5level.py", "/app/test_reports/iteration_3.json"],
+  "success_rate": {"backend": "100% (6/6 new + prior iteration 2 tests still passing)", "frontend": "100%"},
+  "test_credentials": "admin@fatelyn.app / fatelyn@admin2026 (working, auto-seeded)",
+  "seed_data_creation": "None (used existing admin)",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Bug fixes verified end-to-end. Backend /api/astro/dasha returns 5-level nested hierarchy validated against 2 different birth data sets (Delhi 2001 → Purva Phalguni/Venus start lord confirmed; Mumbai 1990 also valid). All hierarchy assertions (each level nested in parent, 'now' inside each window, monotonic maha_list of 12) pass. /dashboard shows BirthForm for user without birth, then real chart with 9 planets, 5 dasha level cards, 12-row Maha sequence with highlighted current row (bg-[#d4a853]/10), real Panchang (Panchami/Krishna/Shatabhisha/Ayushman/05:28/19:23), 8-planet Gochar. phone-frame count = 0 both before and after chart compute. No 'Chetan' text anywhere.",
+  "detailed_verifications": {
+    "dasha_5level_delhi_2001": {"birth_moon_nakshatra": "Purva Phalguni", "starting_maha_lord_at_birth": "Venus", "current": {"maha": "Moon", "antar": "Ketu", "pratyantar": "Saturn", "sookshma": "Mercury", "pran": "Moon"}, "hierarchy_valid": true},
+    "dashboard_phone_frame_count_before_chart": 0,
+    "dashboard_phone_frame_count_after_chart": 0,
+    "chetan_hardcoded_text": "NOT PRESENT",
+    "birth_form_inputs_present": "9/9",
+    "dasha_cards_present": "5/5",
+    "planet_positions_rows": "9/9",
+    "gochar_planets": "8/8 (Ketu correctly absent)",
+    "maha_list_rows": "12/12 with current row (Moon 2018-2028) highlighted",
+    "panchang_real_data": "Tithi Panchami(5), Paksha Krishna, Nakshatra Shatabhisha, Yog Ayushman, Karan Vishti, Sunrise 05:28, Sunset 19:23",
+    "quest_ask_ui_stable": true
+  }
+}

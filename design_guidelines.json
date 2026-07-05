@@ -1,0 +1,245 @@
+{
+  "project_info": {
+    "name": "FATELYN",
+    "tagline": "Unlocking Every Hidden Truth",
+    "type": "hybrid_fullstack",
+    "description": "Marketing landing page with interactive, clickable mobile app screens rendered within realistic phone-frame mockups. Focus on lifestyle motivation, 3D/glassmorphism, and a luxury mystical aesthetic."
+  },
+  "theme_and_archetype": {
+    "domain": "Astrology, Wellness & Lifestyle Motivation",
+    "theme": "Dark",
+    "archetype": "Archetype 5 (Luxury)",
+    "aesthetic": "Modern new gen, 3D view, glass-morphism, floating cosmic elements, editorial premium feel.",
+    "core_directive": "Ensure store approval by adding disclaimers ('For guidance & self-reflection only'). No fortune-telling gimmicks."
+  },
+  "colors": {
+    "background": {
+      "main": "#0A0A0F",
+      "surface": "#1A1420",
+      "cosmic_accent": "#1E1B4B",
+      "warm_plum": "#2D1B3D"
+    },
+    "primary": {
+      "gold_base": "#D4A853",
+      "gold_light": "#F4D68C",
+      "gold_glow": "rgba(212, 168, 83, 0.3)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#E0E0E0",
+      "muted": "#A0A0A0",
+      "inverse": "#0A0A0F"
+    },
+    "borders": {
+      "glass": "rgba(255, 255, 255, 0.1)",
+      "gold": "rgba(212, 168, 83, 0.5)"
+    },
+    "gradients": {
+      "gold_text": "linear-gradient(to right, #F4D68C, #D4A853)",
+      "glass_overlay": "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)",
+      "cosmic_bg": "radial-gradient(circle at top right, #2D1B3D 0%, #0A0A0F 60%)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Cormorant Garamond, serif",
+      "body": "Manrope, sans-serif"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight",
+      "h3": "text-xl sm:text-2xl",
+      "body_lg": "text-lg leading-relaxed",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-muted-foreground",
+      "overline": "text-xs uppercase tracking-[0.2em]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "p-6 md:p-12",
+    "grid_gap": "gap-8",
+    "section_spacing": "py-20 md:py-32",
+    "phone_frame_css": {
+      "width": "390px",
+      "height": "844px",
+      "border-radius": "40px",
+      "border": "8px solid #222",
+      "box-shadow": "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 168, 83, 0.1)",
+      "overflow-y": "auto",
+      "position": "relative",
+      "background": "radial-gradient(circle at top right, #1E1B4B 0%, #0A0A0F 100%)",
+      "scrollbar-width": "none"
+    },
+    "notch_css": {
+      "position": "absolute",
+      "top": "0",
+      "left": "50%",
+      "transform": "translateX(-50%)",
+      "width": "120px",
+      "height": "25px",
+      "background": "#222",
+      "border-bottom-left-radius": "16px",
+      "border-bottom-right-radius": "16px",
+      "z-index": "50"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#D4A853] text-[#0A0A0F] font-bold rounded-full px-6 py-3 hover:bg-[#F4D68C] transition-all hover:scale-105 shadow-[0_0_15px_rgba(212,168,83,0.3)]",
+      "secondary": "bg-transparent border border-[rgba(212,168,83,0.5)] text-[#D4A853] rounded-full px-6 py-3 hover:bg-[rgba(212,168,83,0.1)] transition-all",
+      "glass": "backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 transition-all"
+    },
+    "cards": {
+      "glass": "backdrop-blur-xl bg-[#1A1420]/60 border border-white/10 rounded-2xl shadow-lg relative overflow-hidden",
+      "active_glow": "border-[#D4A853] shadow-[0_0_20px_rgba(212,168,83,0.15)]"
+    },
+    "inputs": {
+      "default": "bg-transparent border-b border-white/20 text-white focus:border-[#D4A853] focus:outline-none py-2 w-full transition-colors",
+      "calendar": "Shadcn based customized with dark mode and gold accents"
+    },
+    "disclaimer": "text-xs text-[#A0A0A0] italic text-center mt-4 opacity-70"
+  },
+  "screens": [
+    {
+      "name": "0. Landing Page (Web)",
+      "layout": "Full width viewport, cosmic background, gold accents.",
+      "sections": [
+        "Hero: FATELYN logo, Tagline, 'Download Now' CTA, 3D floating phone mockups.",
+        "Features Grid: Glassmorphic bento box showing Quest, Compatibility, Chart.",
+        "Testimonials: Editorial style blockquotes.",
+        "Pricing: Subscription tiers mapping.",
+        "Footer: Legal links, store buttons."
+      ]
+    },
+    {
+      "name": "1. Splash / Onboarding (App)",
+      "layout": "Phone frame.",
+      "details": "Animated cosmic intro, logo reveal. 4 swipeable cards for 'Astrology + Motivation'."
+    },
+    {
+      "name": "2. Auth (App)",
+      "layout": "Phone frame.",
+      "details": "Email/Phone input, Google/Apple social buttons. Gold accented inputs."
+    },
+    {
+      "name": "3. Birth Details Wizard (App)",
+      "layout": "Phone frame.",
+      "details": "Step-by-step: Name -> Gender -> DOB (Calendar) -> Time -> Location."
+    },
+    {
+      "name": "4. Home Dashboard (App)",
+      "layout": "Phone frame.",
+      "details": "Personalized greeting, Moon phase widget, Insight of the day, 4 quick access glass cards, Motivational quote."
+    },
+    {
+      "name": "5. My Chart / Details (App)",
+      "layout": "Phone frame.",
+      "details": "Horizontal scroll tabs: Astro Details, Birth Chart (D1-D60), Vimshottari Dasha, Planetary Positions. 3D rendered chart visual."
+    },
+    {
+      "name": "6. Friends & Compatibility (App)",
+      "layout": "Phone frame.",
+      "details": "List of friends, 'Add Friend' button. Detailed report screen with % bars for Respect, Harmony, Trust."
+    },
+    {
+      "name": "7. Milestone Tracker (App)",
+      "layout": "Phone frame.",
+      "details": "Vertical timeline of events. 'Add Milestone' modal. Favorable time calculation."
+    },
+    {
+      "name": "8. Quest AI Q&A (App)",
+      "layout": "Phone frame.",
+      "details": "Chat interface. Category chips. Input for question. AI response with gold border and feedback buttons."
+    },
+    {
+      "name": "9. Gochar / Panchang (App)",
+      "layout": "Phone frame.",
+      "details": "Tabs for Panchang, Lagna Chart, Gochar. Clean data grids."
+    },
+    {
+      "name": "10. Plan Your Year (App)",
+      "layout": "Phone frame.",
+      "details": "Month carousel. Thematic cards ('Strength', 'Resistance')."
+    },
+    {
+      "name": "11. Subscription & Billing (App)",
+      "layout": "Phone frame.",
+      "details": "Premium plans comparison. Stripe sandbox integration test UI. Purchase history."
+    },
+    {
+      "name": "12. Settings (App)",
+      "layout": "Phone frame.",
+      "details": "List view: Language (EN/HI), Biometrics toggle, Notifications, Delete Account."
+    }
+  ],
+  "routing_map": {
+    "landing_cta": "Splash / Onboarding",
+    "onboarding_finish": "Auth",
+    "auth_success": "Birth Details Wizard",
+    "wizard_complete": "Home Dashboard",
+    "home_chart_card": "My Chart",
+    "home_compatibility_card": "Friends & Compatibility",
+    "home_quest_card": "Quest AI",
+    "home_year_card": "Plan Your Year"
+  },
+  "global_rules": [
+    "All interactive elements MUST include data-testid attribute.",
+    "Use Lucide React for icons.",
+    "No emojis as icons.",
+    "Add 'For guidance & self-reflection only — not a substitute for professional advice' disclaimer at the bottom of insight screens.",
+    "Do not use transparent backgrounds under header text; use backdrop-blur glassmorphism.",
+    "Do not use Inter, Roboto, or generic sans for headings."
+  ],
+  "images": {
+    "logo": [
+      "https://customer-assets.emergentagent.com/job_b8a82c54-1400-4535-8649-47c798b49148/artifacts/e9dj2psu_Fatelyn%20Logo.png"
+    ],
+    "backgrounds_cosmic": [
+      "https://images.unsplash.com/photo-1706800696671-570820e7ff39?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85",
+      "https://images.unsplash.com/photo-1595088402198-24d44e48d57c?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85",
+      "https://images.unsplash.com/photo-1707588884167-c482104c6e4b?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85",
+      "https://images.unsplash.com/photo-1710270822125-6614bd66311f?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85",
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85",
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?crop=entropy&cs=srgb&fm=jpg&w=1080&q=85"
+    ],
+    "mystical_gold_compass": [
+      "https://images.unsplash.com/photo-1750874617688-a8244ad97e8a?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1750874617687-97314a8d20df?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1750874617615-4b8e45c3260f?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1501139083538-0139583c060f?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1496337589254-7e19d01cec44?crop=entropy&cs=srgb&fm=jpg&w=800&q=85"
+    ],
+    "lifestyle_motivation": [
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1522075782449-e45a34f1ddfb?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/reserve/YEc7WB6ASDydBTw6GDlF_antalya-beach-lulu.jpg?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1474418397713-7ede21d49118?crop=entropy&cs=srgb&fm=jpg&w=800&q=85"
+    ],
+    "astrology_charts": [
+      "https://images.unsplash.com/photo-1729335511904-9b8690184935?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1729335511883-29eade10006b?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1624274579623-18121fc8126e?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1536697246787-1f7ae568d89a?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1515942400420-2b98fed1f515?crop=entropy&cs=srgb&fm=jpg&w=800&q=85"
+    ],
+    "compatibility_friends": [
+      "https://images.unsplash.com/photo-1644945581764-66b9e8ed4893?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1536010305525-f7aa0834e2c7?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1625283518288-00362afc8663?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1511988617509-a57c8a288659?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1543807535-eceef0bc6599?crop=entropy&cs=srgb&fm=jpg&w=800&q=85"
+    ],
+    "journaling_milestones": [
+      "https://images.unsplash.com/photo-1569360556894-15dca0c6ff1a?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1569360531163-a61fa3da86ee?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1654542645651-5196f4931cd6?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1455390582262-044cdead2708?crop=entropy&cs=srgb&fm=jpg&w=800&q=85",
+      "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=srgb&fm=jpg&w=800&q=85"
+    ]
+  }
+}
