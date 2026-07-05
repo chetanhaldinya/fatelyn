@@ -30,6 +30,8 @@ jobs:
             cp "$LIVE_DIR/frontend/.env" "$RELEASE_DIR/frontend/.env"
 
             echo "----- Install & build backend deps (staging venv) -----"
+            mkdir -p ~/tmp_build
+            export TMPDIR=~/tmp_build
             cd "$RELEASE_DIR/backend"
             python3 -m venv venv
             source venv/bin/activate
