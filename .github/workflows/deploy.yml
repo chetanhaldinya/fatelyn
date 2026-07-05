@@ -1,0 +1,34 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+            cd ~/fatelyn
+            git pull origin main
+
+            echo "----- Backend -----"
+            cd ~/fatelyn/backend
+            source venv/bin/activate
+            pip install -r requirements.txt -q
+            pm2 restart fatelyn-backend
+
+            echo "----- Frontend -----"
+            cd ~/fatelyn/frontend
+            yarn install --frozen-lockfile
+            yarn build
+
+            echo "----- Deploy complete -----"
