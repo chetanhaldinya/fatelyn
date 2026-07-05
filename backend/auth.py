@@ -66,8 +66,8 @@ def create_refresh_token(user_id: str) -> str:
 
 def _set_auth_cookies(response: Response, access: str, refresh: str):
     # secure=True and samesite="none" would require cross-site cookies with HTTPS; the preview URL is HTTPS so we allow it.
-    response.set_cookie("access_token", access, httponly=True, secure=True, samesite="none", max_age=ACCESS_MINUTES * 60, path="/")
-    response.set_cookie("refresh_token", refresh, httponly=True, secure=True, samesite="none", max_age=REFRESH_DAYS * 86400, path="/")
+    response.set_cookie("access_token", access, httponly=True, secure=False, samesite="lax", max_age=ACCESS_MINUTES * 60, path="/")
+    response.set_cookie("refresh_token", refresh, httponly=True, secure=False, samesite="lax", max_age=REFRESH_DAYS * 86400, path="/")
 
 
 def _clear_auth_cookies(response: Response):
