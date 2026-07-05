@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy over SSH
+      - name: Deploy over SSH (safe/atomic)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -17,18 +17,52 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             set -e
-            cd ~/fatelyn
-            git pull origin main
+            RELEASE_DIR=~/fatelyn_new
+            LIVE_DIR=~/fatelyn
+            BACKUP_DIR=~/fatelyn_backup
 
-            echo "----- Backend -----"
-            cd ~/fatelyn/backend
+            echo "----- Fresh checkout into staging folder -----"
+            rm -rf "$RELEASE_DIR"
+            git clone --depth 1 --branch main https://github.com/chetanhaldinya/fatelyn.git "$RELEASE_DIR"
+
+            echo "----- Copy env files from live (not in git) -----"
+            cp "$LIVE_DIR/backend/.env" "$RELEASE_DIR/backend/.env"
+            cp "$LIVE_DIR/frontend/.env" "$RELEASE_DIR/frontend/.env"
+
+            echo "----- Install & build backend deps (staging venv) -----"
+            cd "$RELEASE_DIR/backend"
+            python3 -m venv venv
             source venv/bin/activate
             pip install -r requirements.txt -q
-            pm2 restart fatelyn-backend
+            deactivate
 
-            echo "----- Frontend -----"
-            cd ~/fatelyn/frontend
+            echo "----- Install & build frontend (staging) -----"
+            cd "$RELEASE_DIR/frontend"
             yarn install --frozen-lockfile
             yarn build
 
-            echo "----- Deploy complete -----"
+            echo "----- All builds succeeded, swapping live folder atomically -----"
+            rm -rf "$BACKUP_DIR"
+            mv "$LIVE_DIR" "$BACKUP_DIR"
+            mv "$RELEASE_DIR" "$LIVE_DIR"
+
+            echo "----- Restarting backend -----"
+            cd "$LIVE_DIR/backend"
+            pm2 restart fatelyn-backend --update-env
+
+            echo "----- Health check -----"
+            sleep 3
+            if curl -sf http://localhost:8000/api/health > /dev/null && curl -sf http://localhost/ > /dev/null; then
+              echo "Health check passed. Cleaning old backup."
+              rm -rf "$BACKUP_DIR"
+              echo "----- Deploy complete -----"
+            else
+              echo "Health check FAILED. Rolling back..."
+              pm2 stop fatelyn-backend || true
+              rm -rf "$LIVE_DIR"
+              mv "$BACKUP_DIR" "$LIVE_DIR"
+              cd "$LIVE_DIR/backend"
+              pm2 restart fatelyn-backend --update-env
+              echo "Rolled back to previous working version."
+              exit 1
+            fi
