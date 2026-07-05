@@ -1,7 +1,7 @@
 """Auth utilities and endpoints for FATELYN.
 
 - Email/password JWT (bcrypt + PyJWT) via cookies (access 15min, refresh 7d)
-- Emergent-managed Google Login (session_id → session_data) that upserts the same user record
+- Fatelyn-managed Google Login (session_id → session_data) that upserts the same user record
 - Admin seeding on startup
 - Brute-force protection (5 attempts / 15 min)
 - Role-based access (`user` | `admin`)
@@ -251,18 +251,18 @@ async def refresh(request: Request, response: Response):
     return {"ok": True}
 
 
-# ---------------- Google (Emergent) login ---------------- #
+# ---------------- Google (Fatelyn) login ---------------- #
 class GoogleSessionIn(BaseModel):
     session_id: str
 
 
 @router.post("/google", response_model=UserOut)
 async def google_login(body: GoogleSessionIn, response: Response, request: Request):
-    """Exchange Emergent session_id for user info, upsert user, and issue our own JWT cookies."""
+    """Exchange Fatelyn session_id for user info, upsert user, and issue our own JWT cookies."""
     async with httpx.AsyncClient(timeout=15) as http:
         try:
             r = await http.get(
-                "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data",
+                "https://demobackend.Fatelynagent.com/auth/v1/env/oauth/session-data",
                 headers={"X-Session-ID": body.session_id},
             )
         except Exception as e:

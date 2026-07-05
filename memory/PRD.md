@@ -5,8 +5,8 @@ Ek Vedic astrology + lifestyle motivation full-stack app. Started as an HTML cli
 
 ## Architecture
 ### Backend — `/app/backend` (FastAPI + MongoDB, modular)
-- `server.py` — main app, wires all routers, quest AI (Emergent LLM · Claude Sonnet 4.6), subscription sandbox, activity logger, profile/birth
-- `auth.py` — JWT (bcrypt + PyJWT) email/password + Emergent Google Auth (upsert same user record) + admin seeding + brute-force lockout (email-only, global across pods)
+- `server.py` — main app, wires all routers, quest AI (Fatelyn LLM · Claude Sonnet 4.6), subscription sandbox, activity logger, profile/birth
+- `auth.py` — JWT (bcrypt + PyJWT) email/password + Fatelyn Google Auth (upsert same user record) + admin seeding + brute-force lockout (email-only, global across pods)
 - `astro.py` — Vedic astrology engine using `pyswisseph` (Lahiri sidereal). Endpoints: `/api/astro/chart`, `/api/astro/panchang`, `/api/astro/dasha`, `/api/astro/gochar`
 - `admin.py` — admin endpoints: dashboard stats, users CRUD/role, activity log, content CMS, prompt CMS, subscriptions, quest log
 - `db.py` — Motor client singleton
@@ -41,7 +41,7 @@ Ek Vedic astrology + lifestyle motivation full-stack app. Started as an HTML cli
 - Design system in `/app/design_guidelines.json`
 
 ### Iteration 2 (this session — Dec 2026)
-- Real JWT email/password auth + Emergent Google login (dual-mode, same user table)
+- Real JWT email/password auth + Fatelyn Google login (dual-mode, same user table)
 - Brute-force lockout (email-only, 5 attempts / 15 min)
 - Idempotent admin seeder on startup (`admin@fatelyn.app`)
 - Swiss-ephemeris astrology engine (chart, panchang, dasha, gochar) with Lahiri ayanamsa
@@ -55,7 +55,7 @@ Ek Vedic astrology + lifestyle motivation full-stack app. Started as an HTML cli
 ## Prioritised backlog
 ### P0
 - **Top up Universal LLM Key** so Quest AI returns real answers (currently 502 due to exhausted budget)
-- **Mobile app (Expo React Native)** — switch to Emergent Mobile Agent in next session
+- **Mobile app (Expo React Native)** — switch to Fatelyn Mobile Agent in next session
 
 ### P1
 - Replace mocked `/api/subscription/*` with real Razorpay (INR) or Stripe live

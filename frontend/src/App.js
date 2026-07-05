@@ -14,7 +14,7 @@ import "./index.css";
 
 function AppRouter() {
   const location = useLocation();
-  // Emergent Google auth uses URL fragment; intercept during render (not effect) to avoid race.
+  // Fatelyn Google auth uses URL fragment; intercept during render (not effect) to avoid race.
   if (location.hash?.includes("session_id=")) return <AuthCallback />;
   return (
     <Routes>

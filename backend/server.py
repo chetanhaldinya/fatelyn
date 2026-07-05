@@ -53,12 +53,12 @@ async def quest_ask(payload: QuestAskRequest, request: Request):
 
     Reads the live `quest_system` prompt from Mongo so admins can tune it without redeploy.
     """
-    from emergentintegrations.llm.chat import LlmChat, UserMessage
+    from Fatelynintegrations.llm.chat import LlmChat, UserMessage
 
     db = get_db()
-    api_key = os.environ.get("EMERGENT_LLM_KEY")
+    api_key = os.environ.get("Fatelyn_LLM_KEY")
     if not api_key:
-        raise HTTPException(status_code=500, detail="EMERGENT_LLM_KEY not configured")
+        raise HTTPException(status_code=500, detail="Fatelyn_LLM_KEY not configured")
 
     # Try to attach user context if logged in (soft auth)
     user = None

@@ -2,7 +2,7 @@
 // Real values come from Flutter dev's astrology engine — this is UI reference only.
 
 export const LOGO_URL =
-  "https://customer-assets.emergentagent.com/job_b8a82c54-1400-4535-8649-47c798b49148/artifacts/e9dj2psu_Fatelyn%20Logo.png";
+  "https://customer-assets.Fatelynagent.com/job_b8a82c54-1400-4535-8649-47c798b49148/artifacts/e9dj2psu_Fatelyn%20Logo.png";
 
 export const IMG = {
   cosmic: [
